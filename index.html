@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script type="text/javascript" defer>
+      // check to see if Handlebars is loaded
+      var a = window.Handlebars;
+
+      if(a){
+        console.log("Handlebars loaded");
+      }
+    </script>
+  </head>
+  <body>
+
+    <!--
+      - ***************************************************************** Demo 1
+    -->
+    <div id="occupationData"></div>
+    <script id="demo-1" type="text/x-handlebars-template">
+      {{!-- the occupationData template --}}
+      <h3>Hero Status</h3>
+        My name is {{name}}, and I am a {{occupation}}.
+    </script>
+    <!--
+      - ***************************************************************** Demo 1
+    -->
+
+
+
+
+
+    <!--
+      - ************************************************************* Practice 1
+    -->
+    <div id="newsData"></div>
+    <script id="practice1" type="text/x-handlebars-template">
+      {{!-- the newsData template --}}
+      <h3>American News</h3>
+        News outlets in America are: {{news1}}, {{news2}}, {{news3}}, and {{news4}}.
+    </script>
+    <!--
+      - ************************************************************* Practice 1
+    -->
+
+
+
+
+
+    <!--
+      - ************************************************************* Practice 2
+    -->
+    <div id="ageData"></div>
+    <script id="practice2" type="text/x-handlebars-template">
+      {{!-- the ageData template --}}
+        <h3>User ages</h3>
+        {{user1}} : {{age1}} <br/>
+        {{user2}} : {{age2}} <br/>
+        {{user3}} : {{age3}} <br/>
+        {{user4}} : {{age4}} <br/>
+    </script>
+    <!--
+      - ************************************************************* Practice 2
+    -->
+
+
+
+
+    <!--
+      - ************************************************************* Practice 3
+    -->
+    <div id="moneyData"></div>
+    <script id="practice3" type="text/x-handlebars-template">
+      {{!-- the moneyData template --}}
+      <h3>Money Data</h3>
+      {{country1}} : {{{currency1}}} <br/>
+      {{country2}} : {{{currency2}}} <br/>
+      {{country3}} : {{{currency3}}} <br/>
+    </script>
+    <!--
+      - ************************************************************* Practice 3
+    -->
+
+
+
+
+
+    <!--
+      - ************************************************* Blocks, Paths
+    -->
+    <div id="teamDiv"></div>
+    <script id="teamTemplate" type="text/x-handlebars-template">
+      <h3>Team Data</h3>
+      {{!-- the teamData template --}}
+      This info is available on {{website.name}} <br/>
+
+
+      {{!-- this data iterates over the items of an array --}}
+      {{#each heroes}}
+        I am {{hero}}, and I am a {{../title}}.<br/>
+      {{/each}}
+
+    </script>
+    <!--
+      - ************************************************* Blocks, Paths
+    -->
+
+
+
+
+    <!--
+      - ***************************************************** Expression Helpers - EACH
+    -->
+    <div id="helperEachDiv"></div>
+    <script id="helperEachTemplate" type="text/x-handlebars-template">
+      {{!-- EACH HELPER --}}
+
+      {{!-- the countriesData template --}}
+      <h3>Countries Data</h3>
+      {{#each countries}}
+        {{@index}} : {{this}} <br/>
+      {{/each}}
+
+      <br/>
+
+      {{!-- birds from countries --}}
+      {{#each birds}}
+        {{@index}} : {{this}} <br/>
+      {{/each}}
+
+      <br/>
+
+      {{!-- common names --}}
+      {{#each commonNames}}
+        <strong>Common names:</strong> {{firstName}} {{lastName}} <br/>
+      {{/each}}
+    </script>
+    <!--
+      - ***************************************************** Expression Helpers - EACH
+    -->
+
+
+
+
+
+    <!--
+      - ***************************************************** Expression Helpers - IF
+    -->
+    <div id="helperIfElseDiv"></div>
+    <script id="helperIfElseTemplate" type="text/x-handlebars-template">
+      {{!--If Else HELPER --}}
+      <h3>Fruits and Veggies Data</h3>
+
+      {{!-- Fruits Array --}}
+      {{#if fruits}}
+        Have a fruit
+      {{else}}
+        No fruits for you
+      {{/if}}
+
+      <br/>
+      <strong>BUT</strong>
+      <br/>
+
+      {{!-- Veggies Array --}}
+      {{#if veggies}}
+        Have Some Veggies
+      {{else}}
+        No veggies for you
+      {{/if}}
+    </script>
+    <!--
+      - ***************************************************** Expression Helpers - IF
+    -->
+
+
+
+
+
+    <!--
+      - ********************************************************* Custom Helpers
+    -->
+    <div id="customHelper1"></div>
+    <script id="customHelperTemplate1" type="text/x-handlebars-template">
+      <h3>Age Data</h3>
+
+      {{#each students}}
+
+      {{!--
+        * call the data in the students array
+        * calls the name of the custom registered helper
+        * then
+        * calls the argument in the helpers function
+        * in which the parameter is called and given a value in a conditional statement
+      --}}
+
+        {{name}}: has {{studyStatus passingYear}}. With a score of {{../score}}.<br/>
+
+      {{/each}}
+    </script>
+
+
+    <div id="membersDiv"></div>
+    <script id="membersTemplate" type="text/x-handlebars-template">
+      <h3>Members</h3>
+
+      {{#each members}}
+        {{member}} is {{age}}: {{membership age}} <br/> <hr/>
+      {{/each}}
+
+    </script>
+    <!--
+      - ********************************************************* Custom Helpers
+    -->
+
+
+
+
+    <!--
+      - *************************************************** Custom Block Helpers
+    -->
+    <div id="studentsDiv"></div>
+    <script id="studentsTemplate" type="text/x-handlebars-template">
+      <h3>Students Status</h3>
+      {{!--
+        * students is called in the data, it is the arry of objects that holds the values
+      --}}
+
+      {{#studentStatus students}}
+        {{name}} has {{passingYear}} <br/>
+      {{/studentStatus}}
+    </script>
+
+
+    <div id="sizeDiv"></div>
+    <script id="sizeTemplate" type="text/x-handlebars-template">
+      <h3>Athlete Height</h3>
+
+      {{!--
+        * athleteSize: Custom helper
+        * athletes: All Data from the helper
+        * athlete: Single object data pulled from data array
+        * height: Single object data pulled from data array
+      --}}
+
+      {{#athleteSize athletes}}
+        {{athlete}}  {{height}}<br/>
+      {{/athleteSize}}
+    </script>
+
+
+    <div id="showDiv"></div>
+    <script id="showTemplate" type="text/x-handlebars-template">
+      <h3>Random Stuff</h3>
+
+      {{!--
+        * athleteSize: Custom helper
+        * athletes: All Data from the helper
+        * athlete: Single object data pulled from data array
+        * height: Single object data pulled from data array
+      --}}
+
+      {{#randomObjects stuff}}
+        {{weight}}  {{size}}<br/>
+      {{/randomObjects}}
+    </script>
+    <!--
+      - *************************************************** Custom Block Helpers
+    -->
+
+
+
+
+
+
+
+
+    <!--
+      - ****************************************************** Partial Templates
+    -->
+    <div id="dirDiv"></div>
+    <script id="dirTemplate" type="text/x-handlebars-template">
+      {{> dirTemplate website="droga5"}}
+    </script>
+
+
+    <div id="dragonDiv"></div>
+    <script id="dragonTemplate" type="text/x-handlebars-template">
+      {{> dragons element="woods"}}
+    </script>
+    <!--
+      - ****************************************************** Partial Templates
+    -->
+
+    <h2>JSON</h2>
+
+  </body>
+</html>
